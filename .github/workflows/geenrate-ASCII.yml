@@ -1,28 +1,26 @@
-name: Generate ASCII artowrk
+name: Generate ASCII artwork
 
 on:
   push
 
 jobs:
-    ascii_job:
-        runs-on: ubuntu-latest
-        steps:
-        - name: checkout repo
-          uses: actions/checkout@v6
+  ascii_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-        - name: Install cowsay
-          run: sudo apt-get install cowsay -y
-          
-        - name: execute cowsay command
-          run: cowsay -f sheep "bzzZZz BZZzzZZ Bzzz flower" >> bee.txt
+      - name: Install cowsay
+        run: sudo apt-get install cowsay -y
 
-        - name: test file exists
-          run: grep -i "sheep" bee.txt
+      - name: Execute cowsay command
+        run: /usr/games/cowsay -f sheep "bzzZZz BZZzzZZ Bzzz flower" >> bee.txt
 
-        - name: read file
-          run: cat bee.txt
+      - name: Test file exists and has content
+        run: grep -i "bzzzzz" bee.txt
 
-        - name: checkout repo files
-          run: ls -ltra
-          
+      - name: Read file
+        run: cat bee.txt
 
+      - name: List repo files
+        run: ls -ltra
