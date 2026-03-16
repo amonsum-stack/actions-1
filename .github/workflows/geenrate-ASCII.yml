@@ -14,7 +14,7 @@ jobs:
           run: sudo apt-get install cowsay -y
           
         - name: execute cowsay command
-          run: owsay -f bee "bzzZZz BZZzzZZ Bzzz flower" >> bee.txt
+          run: cowsay -f bee "bzzZZz BZZzzZZ Bzzz flower" >> bee.txt
 
         - name: test file exists
           run: grep -i "bee" bee.txt
