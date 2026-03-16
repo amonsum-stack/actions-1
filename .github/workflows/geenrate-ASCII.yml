@@ -14,10 +14,10 @@ jobs:
           run: sudo apt-get install cowsay -y
           
         - name: execute cowsay command
-          run: cowsay -f bee "bzzZZz BZZzzZZ Bzzz flower" >> bee.txt
+          run: cowsay -f sheep "bzzZZz BZZzzZZ Bzzz flower" >> bee.txt
 
         - name: test file exists
-          run: grep -i "bee" bee.txt
+          run: grep -i "sheep" bee.txt
 
         - name: read file
           run: cat bee.txt
