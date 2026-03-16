@@ -9,18 +9,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Install cowsay
-        run: sudo apt-get install cowsay -y
-
-      - name: Execute cowsay command
-        run: /usr/games/cowsay -f sheep "bzzZZz BZZzzZZ Bzzz flower" >> bee.txt
-
-      - name: Test file exists and has content
-        run: grep -i "bzzzzz" bee.txt
-
-      - name: Read file
-        run: cat bee.txt
-
+        
       - name: List repo files
         run: ls -ltra
+
+      - name: execute shell script
+        run: ./ascii-scrip.sh
