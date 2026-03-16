@@ -4,17 +4,34 @@ on:
   push
 
 jobs:
-  ascii_job:
+  build_job_1:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: install cowsay
+        run : sudo apt-get install cowsay -y
         
-      - name: List repo files
-        run: ls -ltra
+      - name: execute cowsay
+        run: /usr/games/cowsay -f dragon "fire fire fire" >> dragon.txt
 
-      - name: mode +x
-        run: chmod +x ./.github/workflows/ascii-script.sh
+      - name: sleep for 30
+        run: sleep 30
+  
+  test_job_2:
+    needs: build_job_1
+    runs-on: ubuntu-latest
+    steps:
+       - name: sleep 10
+         run: sleep 10
+     
+       - name: test file exitst
+         run: grep -i "fire" dragon.txt
 
-      - name: run the script
-        run: ./.github/workflows/ascii-script.sh
+  deploy_job_3: 
+    needs: test_job_2
+    runs-on: ubuntu-latest
+    steps:
+       - name: read file
+         run: cat dragon.txt
+
+
+
