@@ -1,0 +1,28 @@
+name: Generate ASCII artowrk
+
+on:
+  push
+
+jobs:
+    ascii_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: checkout repo
+          uses: actions/checkout@v6
+
+        - name: Install cowsay
+          run: sudo apt-get install cowsay -y
+          
+        - name: execute cowsay command
+          run: owsay -f bee "bzzZZz BZZzzZZ Bzzz flower" >> bee.txt
+
+        - name: test file exists
+          run: grep -i "bee" bee.txt
+
+        - name: read file
+          run: cat bee.txt
+
+        - name: checkout repo files
+          run: ls -ltra
+          
+
